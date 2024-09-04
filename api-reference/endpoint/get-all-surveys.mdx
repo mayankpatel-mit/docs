@@ -1,0 +1,41 @@
+
+---
+title: 'Get All Surveys'
+openapi: 'POST /surveys'
+---
+
+## Get All Surveys
+
+Fetch all surveys with specific filters.
+
+### Endpoint
+```bash
+POST /surveys
+```
+
+### Headers
+```json
+{
+  "publisher-authentication-key": "umuL6VB952Gg8NGJL7T9xUVUEF5agLsUMvZgexw4"
+}
+```
+
+### Request Body
+```json
+{
+  "authorizationKey": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU",
+  "country": "US",
+  "language": "English",
+  "lengthOfInterviewGTE": 1,
+  "lengthOfInterviewLTE": 5,
+  "collectPII": false,
+  "CPIGTE": 1,
+  "CPILTE": 5,
+  "surveyGroupExists": false,
+  "incidenceRateGTE": 1,
+  "incidenceRateLTE": 25
+}
+```
+
+### Response
+Returns a list of surveys that match the filters provided.

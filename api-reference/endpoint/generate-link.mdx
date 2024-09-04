@@ -1,0 +1,31 @@
+
+---
+title: 'Generate Survey Link'
+openapi: 'POST /surveys/{survey_id}/link'
+---
+
+## Generate Survey Link
+
+Generate a survey link for distribution.
+
+### Endpoint
+```bash
+POST /surveys/{survey_id}/link
+```
+
+### Headers
+```json
+{
+  "publisher-authentication-key": "umuL6VB952Gg8NGJL7T9xUVUEF5agLsUMvZgexw4"
+}
+```
+
+### Request Body
+```json
+{
+  "authorizationKey": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
+}
+```
+
+### Response
+Returns the survey link for the specified survey.
