@@ -1,22 +1,21 @@
-
 ---
-title: 'Get All Surveys'
+title: 'Get All Live Surveys'
 openapi: 'POST /surveys'
 ---
 
-## Get All Surveys
+## Get All Live Surveys
 
-Fetch all surveys with specific filters.
+Retrieve a list of all live surveys based on filtering criteria.
 
 ### Endpoint
-```bash
+```http
 POST /surveys
 ```
 
 ### Headers
 ```json
 {
-  "publisher-authentication-key": "umuL6VB952Gg8NGJL7T9xUVUEF5agLsUMvZgexw4"
+  "publisher-authentication-key": "your_project_secret_key"
 }
 ```
 
@@ -38,4 +37,29 @@ POST /surveys
 ```
 
 ### Response
-Returns a list of surveys that match the filters provided.
+```json
+{
+  "success": true,
+  "surveys": [
+    {
+      "surveyNumber": 100000001,
+      "surveysId": "encryptedSurveyId",
+      "loi": 5,
+      "ir": 25
+    }
+  ],
+  "surveysCount": 1,
+  "projectName": "Testing project",
+  "projectNumber": 100000001,
+  "organisation": "mirats insights"
+}
+```
+
+### Error Response
+```json
+{
+  "message": "internal server error",
+  "code": 500,
+  "success": false
+}
+```

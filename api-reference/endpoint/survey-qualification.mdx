@@ -1,22 +1,21 @@
-
 ---
-title: 'Survey Qualification'
-openapi: 'POST /surveys/{survey_id}/qualification'
+title: 'Get Survey Qualification'
+openapi: 'POST /surveys/{surveyNumber}/qualification'
 ---
 
-## Survey Qualification
+## Get Survey Qualification
 
-Get qualifications for a specific survey.
+Retrieve the qualification criteria for a specific survey.
 
 ### Endpoint
-```bash
-POST /surveys/{survey_id}/qualification
+```http
+POST /surveys/{surveyNumber}/qualification
 ```
 
 ### Headers
 ```json
 {
-  "publisher-authentication-key": "umuL6VB952Gg8NGJL7T9xUVUEF5agLsUMvZgexw4"
+  "publisher-authentication-key": "your_project_secret_key"
 }
 ```
 
@@ -28,4 +27,45 @@ POST /surveys/{survey_id}/qualification
 ```
 
 ### Response
-Returns the qualification details for the specified survey.
+```json
+{
+  "surveyNumber": 100000001,
+  "qualification": [
+    {
+      "question": "What industry do you work in?",
+      "validOptions": ["Insurance"],
+      "displayOptions": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "Manufacturing",
+        "Insurance",
+        "Retail",
+        "Education",
+        "Government",
+        "Consulting",
+        "Hospitality",
+        "Other",
+        "Student"
+      ]
+    },
+    {
+      "question": "What is your gender?",
+      "validOptions": ["Female"],
+      "displayOptions": ["Male", "Female"]
+    }
+  ],
+  "projectName": "Testing project",
+  "projectNumber": 100000001,
+  "organisation": "mirats insights"
+}
+```
+
+### Error Response
+```json
+{
+  "message": "internal server error",
+  "code": 500,
+  "success": false
+}
+```

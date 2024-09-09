@@ -1,22 +1,21 @@
-
 ---
 title: 'Get Single Survey'
-openapi: 'POST /surveys/one/{survey_id}'
+openapi: 'POST /surveys/one/{surveyNumber}'
 ---
 
 ## Get Single Survey
 
-Retrieve details of a single survey by its ID.
+Retrieve details of a specific survey by its survey number.
 
 ### Endpoint
-```bash
-POST /surveys/one/{survey_id}
+```http
+POST /surveys/one/{surveyNumber}
 ```
 
 ### Headers
 ```json
 {
-  "publisher-authentication-key": "umuL6VB952Gg8NGJL7T9xUVUEF5agLsUMvZgexw4"
+  "publisher-authentication-key": "your_project_secret_key"
 }
 ```
 
@@ -28,4 +27,47 @@ POST /surveys/one/{survey_id}
 ```
 
 ### Response
-Returns details of the specified survey.
+```json
+{
+  "loi": 7,
+  "ir": 25,
+  "surveyNumber": 100000001,
+  "qualification": [
+    {
+      "question": "What industry do you work in?",
+      "validOptions": ["Insurance"],
+      "displayOptions": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "Manufacturing",
+        "Insurance",
+        "Retail",
+        "Education",
+        "Government",
+        "Consulting",
+        "Hospitality",
+        "Other",
+        "Student"
+      ]
+    },
+    {
+      "question": "What is your gender?",
+      "validOptions": ["Female"],
+      "displayOptions": ["Male", "Female"]
+    }
+  ],
+  "projectName": "Testing project",
+  "projectNumber": 100000001,
+  "organisation": "mirats insights"
+}
+```
+
+### Error Response
+```json
+{
+  "message": "internal server error",
+  "code": 500,
+  "success": false
+}
+```

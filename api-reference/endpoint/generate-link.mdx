@@ -1,22 +1,21 @@
-
 ---
 title: 'Generate Survey Link'
-openapi: 'POST /surveys/{survey_id}/link'
+openapi: 'POST /surveys/{surveyNumber}/link'
 ---
 
 ## Generate Survey Link
 
-Generate a survey link for distribution.
+Generate a link for a specific survey.
 
 ### Endpoint
-```bash
-POST /surveys/{survey_id}/link
+```http
+POST /surveys/{surveyNumber}/link
 ```
 
 ### Headers
 ```json
 {
-  "publisher-authentication-key": "umuL6VB952Gg8NGJL7T9xUVUEF5agLsUMvZgexw4"
+  "publisher-authentication-key": "your_project_secret_key"
 }
 ```
 
@@ -28,4 +27,18 @@ POST /surveys/{survey_id}/link
 ```
 
 ### Response
-Returns the survey link for the specified survey.
+```json
+{
+  "testLink": "https://api.publisher.miratsquanto.com/start?pid=someencryptedid&org=someencryptedid&sId=someencryptedid&supId=someencryptedid&orgId=someencryptedid&sn=100000001&t=1&r=xxxxx",
+  "liveLink": "https://api.publisher.miratsquanto.com/start?pid=someencryptedid&org=someencryptedid&sId=someencryptedid&supId=someencryptedid&orgId=someencryptedid&sn=100000001&t=0&r=xxxxx"
+}
+```
+
+### Error Response
+```json
+{
+  "message": "internal server error",
+  "code": 500,
+  "success": false
+}
+```
