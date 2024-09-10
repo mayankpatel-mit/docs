@@ -1,98 +1,38 @@
 ---
-title: 'Development'
-description: 'Learn how to preview changes locally'
+title: "Development of SDK"
 ---
 
-<Info>
-  **Prerequisite** You should have installed Node.js (version 18.10.0 or
-  higher).
-</Info>
+# Development of SDK
 
-Step 1. Install Mintlify on your OS:
+At **Mirats Publisher Platform**, we're committed to providing the best tools to simplify your integration process. Our team is working tirelessly to deliver **SDKs** that will make it even easier for you to interact with our platform.
 
-<CodeGroup>
+### What's Coming?
 
-```bash npm
-npm i -g mintlify
-```
+The upcoming SDKs will streamline how you:
 
-```bash yarn
-yarn global add mintlify
-```
+- **Manage surveys** effortlessly.
+- **Target your audience** with precision.
+- **Track and analyze performance** in real time.
 
-</CodeGroup>
+But don't worry! You don't have to wait to start using our platform's full potential. While we're building these SDKs, you can still access all of our platform's powerful features via our **API**.
 
-Step 2. Go to the docs are located (where you can find `mint.json`) and run the following command:
+### 📘 Get Started with Our API
 
-```bash
-mintlify dev
-```
+Until the SDKs are released, you can integrate with the platform by visiting our **[API Reference](https://docs.publisher.miratsquanto.com/api-reference/introduction)**.
 
-The documentation website is now available at `http://localhost:3000`.
+Here’s what you can do with the API:
 
-### Custom Ports
+- 📝 **Create and manage surveys** easily.
+- 🎯 **Target global audiences** with robust filtering options.
+- 📊 **Monitor real-time analytics** to optimize your campaigns.
+- 📈 **Track KPIs** and measure your success.
 
-Mintlify uses port 3000 by default. You can use the `--port` flag to customize the port Mintlify runs on. For example, use this command to run in port 3333:
+We’ve designed our API to be intuitive and flexible, giving you full control over your integration process. 
 
-```bash
-mintlify dev --port 3333
-```
+### Stay Tuned!
 
-You will see an error like this if you try to run Mintlify in a port that's already taken:
+Our SDKs are on the way, but you can already take full advantage of the **Mirats Publisher Platform** through the API. We’re excited to support your growth and success, and we’ll keep you updated on the SDKs’ release!
 
-```md
-Error: listen EADDRINUSE: address already in use :::3000
-```
+If you have any questions or need assistance, don't hesitate to reach out to our support team. We’re here to help!
 
-## Mintlify Versions
-
-Each CLI is linked to a specific version of Mintlify. Please update the CLI if your local website looks different than production.
-
-<CodeGroup>
-
-```bash npm
-npm i -g mintlify@latest
-```
-
-```bash yarn
-yarn global upgrade mintlify
-```
-
-</CodeGroup>
-
-## Deployment
-
-<Tip>
-  Unlimited editors available under the [Startup
-  Plan](https://mintlify.com/pricing)
-</Tip>
-
-You should see the following if the deploy successfully went through:
-
-<Frame>
-  <img src="/images/checks-passed.png" style={{ borderRadius: '0.5rem' }} />
-</Frame>
-
-## Troubleshooting
-
-Here's how to solve some common problems when working with the CLI.
-
-<AccordionGroup>
-  <Accordion title="Mintlify is not loading">
-    Update to Node v18. Run `mintlify install` and try again.
-  </Accordion>
-  <Accordion title="No such file or directory on Windows">
-Go to the `C:/Users/Username/.mintlify/` directory and remove the `mint`
-folder. Then Open the Git Bash in this location and run `git clone
-https://github.com/mintlify/mint.git`.
-
-Repeat step 3.
-
-  </Accordion>
-  <Accordion title="Getting an unknown error">
-    Try navigating to the root of your device and delete the ~/.mintlify folder.
-    Then run `mintlify dev` again.
-  </Accordion>
-</AccordionGroup>
-
-Curious about what changed in a CLI version? [Check out the CLI changelog.](/changelog/command-line)
+> **Thank you for choosing Mirats Publisher Platform!** 🌟
