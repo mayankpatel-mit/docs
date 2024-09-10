@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Publisher Docs - Mirats Quanto",
   "logo": {
-    "dark": "https://mirats.in/static/miratsgrouplogo.png",
-    "light": "/logo/light.svg"
+    "dark": "https://firebasestorage.googleapis.com/v0/b/miratsgroupcis.appspot.com/o/centralised_information_system%2FMirats%20Insights%20Private%20Limited%2Flarge_logo%2FL_TR_TEXT_W.png?alt=media&token=2829f79a-c6e7-451f-a992-40d1756ce5be",
+    "light": "https://firebasestorage.googleapis.com/v0/b/miratsgroupcis.appspot.com/o/centralised_information_system%2FMirats%20Insights%20Private%20Limited%2Flarge_logo%2FL_TR_TEXT_B.png?alt=media&token=9def6be9-d4cf-4a3a-b389-8bc01a7a3b0d"
   },
   "favicon": "https://mirats.in/logo.png",
   "colors": {
