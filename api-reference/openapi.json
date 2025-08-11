@@ -12,126 +12,139 @@
     }
   ],
   "paths": {
-    "/surveys": {
-      "post": {
-        "summary": "Get All Live Surveys",
-        "operationId": "getAllLiveSurveys",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "authorizationKey": {
-                    "type": "string",
-                    "description": "Project web API key",
-                    "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
-                  },
-                  "country": {
-                    "type": "string",
-                    "description": "Country code (e.g., US, IN)",
-                    "example": "US"
-                  },
-                  "language": {
-                    "type": "string",
-                    "description": "Language (optional)",
-                    "example": "English"
-                  },
-                  "lengthOfInterviewGTE": {
-                    "type": "integer",
-                    "description": "Minimum length of interview (optional)",
-                    "example": 1
-                  },
-                  "lengthOfInterviewLTE": {
-                    "type": "integer",
-                    "description": "Maximum length of interview (optional)",
-                    "example": 5
-                  },
-                  "collectPII": {
-                    "type": "boolean",
-                    "description": "Whether to collect PII (optional)",
-                    "example": false
-                  },
-                  "CPIGTE": {
-                    "type": "integer",
-                    "description": "Minimum CPI (optional)",
-                    "example": 1
-                  },
-                  "CPILTE": {
-                    "type": "integer",
-                    "description": "Maximum CPI (optional)",
-                    "example": 5
-                  },
-                  "surveyGroupExists": {
-                    "type": "boolean",
-                    "description": "Whether a survey group exists (optional)",
-                    "example": false
-                  },
-                  "incidenceRateGTE": {
-                    "type": "integer",
-                    "description": "Minimum incidence rate (optional)",
-                    "example": 1
-                  },
-                  "incidenceRateLTE": {
-                    "type": "integer",
-                    "description": "Maximum incidence rate (optional)",
-                    "example": 25
+"/surveys": {
+  "post": {
+    "summary": "Get All Live Surveys",
+    "operationId": "getAllLiveSurveys",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "authorizationKey": {
+                "type": "string",
+                "description": "Project web API key",
+                "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
+              },
+              "country": {
+                "type": "string",
+                "description": "Country code (e.g., US, IN)",
+                "example": "US"
+              },
+              "rows": {
+                "type": "integer",
+                "description": "Number of surveys to return per page (max 100)",
+                "minimum": 1,
+                "maximum": 100,
+                "example": 50
+              },
+              "page": {
+                "type": "integer",
+                "description": "Page number for pagination (starts from 1)",
+                "minimum": 1,
+                "example": 1
+              },
+              "language": {
+                "type": "string",
+                "description": "Language (optional)",
+                "example": "English"
+              },
+              "lengthOfInterviewGTE": {
+                "type": "integer",
+                "description": "Minimum length of interview (optional)",
+                "example": 1
+              },
+              "lengthOfInterviewLTE": {
+                "type": "integer",
+                "description": "Maximum length of interview (optional)",
+                "example": 5
+              },
+              "collectPII": {
+                "type": "boolean",
+                "description": "Whether to collect PII (optional)",
+                "example": false
+              },
+              "CPIGTE": {
+                "type": "integer",
+                "description": "Minimum CPI (optional)",
+                "example": 1
+              },
+              "CPILTE": {
+                "type": "integer",
+                "description": "Maximum CPI (optional)",
+                "example": 5
+              },
+              "surveyGroupExists": {
+                "type": "boolean",
+                "description": "Whether a survey group exists (optional)",
+                "example": false
+              },
+              "incidenceRateGTE": {
+                "type": "integer",
+                "description": "Minimum incidence rate (optional)",
+                "example": 1
+              },
+              "incidenceRateLTE": {
+                "type": "integer",
+                "description": "Maximum incidence rate (optional)",
+                "example": 25
+              }
+            },
+            "required": ["authorizationKey", "country"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Successful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean", "example": true },
+                "surveys": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "surveyNumber": { "type": "integer", "example": 100000001 },
+                      "surveysId": { "type": "string", "example": "encryptedSurveyId" },
+                      "loi": { "type": "integer", "example": 5 },
+                      "ir": { "type": "integer", "example": 25 }
+                    }
                   }
                 },
-                "required": ["authorizationKey", "country"]
+                "surveysCount": { "type": "integer", "example": 1 },
+                "projectName": { "type": "string", "example": "Testing project" },
+                "projectNumber": { "type": "integer", "example": 100000001 },
+                "organisation": { "type": "string", "example": "mirats insights" }
               }
             }
           }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": { "type": "boolean", "example": true },
-                    "surveys": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "surveyNumber": { "type": "integer", "example": 100000001 },
-                          "surveysId": { "type": "string", "example": "encryptedSurveyId" },
-                          "loi": { "type": "integer", "example": 5 },
-                          "ir": { "type": "integer", "example": 25 }
-                        }
-                      }
-                    },
-                    "surveysCount": { "type": "integer", "example": 1 },
-                    "projectName": { "type": "string", "example": "Testing project" },
-                    "projectNumber": { "type": "integer", "example": 100000001 },
-                    "organisation": { "type": "string", "example": "mirats insights" }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": { "type": "string", "example": "internal server error" },
-                    "code": { "type": "integer", "example": 500 },
-                    "success": { "type": "boolean", "example": false }
-                  }
-                }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": { "type": "string", "example": "internal server error" },
+                "code": { "type": "integer", "example": 500 },
+                "success": { "type": "boolean", "example": false }
               }
             }
           }
         }
       }
-    },
+    }
+  }
+},
     "/surveys/one/{surveyNumber}": {
       "post": {
         "summary": "Get Single Survey",
