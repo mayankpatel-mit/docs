@@ -1,6 +1,6 @@
 ---
-title: 'Get All Live Surveys'
-openapi: 'POST /surveys'
+title: "Get All Live Surveys"
+openapi: "POST /surveys"
 ---
 
 ## Get All Live Surveys
@@ -8,11 +8,13 @@ openapi: 'POST /surveys'
 Retrieve a list of all live surveys based on filtering criteria.
 
 ### Endpoint
+
 ```http
 POST /surveys
 ```
 
 ### Headers
+
 ```json
 {
   "publisher-authentication-key": "your_project_secret_key"
@@ -20,6 +22,7 @@ POST /surveys
 ```
 
 ### Request Body
+
 ```json
 {
   "authorizationKey": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU",
@@ -28,6 +31,8 @@ POST /surveys
   "lengthOfInterviewGTE": 1,
   "lengthOfInterviewLTE": 5,
   "collectPII": false,
+  "rows": 50,
+  "page": 1,
   "CPIGTE": 1,
   "CPILTE": 5,
   "surveyGroupExists": false,
@@ -37,6 +42,7 @@ POST /surveys
 ```
 
 ### Response
+
 ```json
 {
   "success": true,
@@ -56,6 +62,7 @@ POST /surveys
 ```
 
 ### Error Response
+
 ```json
 {
   "message": "internal server error",
