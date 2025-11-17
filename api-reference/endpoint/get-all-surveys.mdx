@@ -7,6 +7,8 @@ openapi: "POST /surveys"
 
 Retrieve a list of all live surveys based on filtering criteria.
 
+> **Note:** The `rows` parameter accepts a maximum value of **500** surveys per page. The fields `loi` and `ir` are deprecated. Please use `length_of_interview` and `incidence_rate` instead.
+
 ### Endpoint
 
 ```http
@@ -57,9 +59,7 @@ POST /surveys
       },
       "surveyNumber": 17633744316785364,
       "survey_number": 17633744316785364,
-      "loi": 10,
       "length_of_interview": 10,
-      "ir": 10,
       "incidence_rate": 10,
       "cpi": 1.07,
       "country": "United States of America",
@@ -69,7 +69,7 @@ POST /surveys
       "overall_completes": 0,
       "revenue_per_click": 0,
       "survey_created_date": "2025-11-17T10:24:10.829Z",
-      "survey_lastupdated_date": "2025-11-17T10:24:10.829Z"
+      "survey_last_updated_date": "2025-11-17T10:24:10.829Z"
     },
     {
       "_id": "691af51da929b31134b52678",
@@ -79,9 +79,7 @@ POST /surveys
       },
       "surveyNumber": 17633743620135364,
       "survey_number": 17633743620135364,
-      "loi": 35,
       "length_of_interview": 35,
-      "ir": 20,
       "incidence_rate": 20,
       "cpi": 1.28,
       "country": "United States of America",
@@ -91,7 +89,7 @@ POST /surveys
       "overall_completes": 0,
       "revenue_per_click": 0,
       "survey_created_date": "2025-11-17T10:24:10.829Z",
-      "survey_lastupdated_date": "2025-11-17T10:24:10.829Z"
+      "survey_last_updated_date": "2025-11-17T10:24:10.829Z"
     },
     {
       "_id": "691af51da92923453sb52677",
@@ -101,9 +99,7 @@ POST /surveys
       },
       "surveyNumber": 17633743615055360,
       "survey_number": 17633743615055360,
-      "loi": 35,
       "length_of_interview": 35,
-      "ir": 20,
       "incidence_rate": 20,
       "cpi": 1.28,
       "country": "United States of America",
@@ -113,7 +109,7 @@ POST /surveys
       "overall_completes": 0,
       "revenue_per_click": 0,
       "survey_created_date": "2025-11-17T10:24:10.829Z",
-      "survey_lastupdated_date": "2025-11-17T10:24:10.829Z"
+      "survey_last_updated_date": "2025-11-17T10:24:10.829Z"
     }
   ],
   "surveysCount": 3,

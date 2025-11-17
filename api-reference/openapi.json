@@ -199,26 +199,32 @@
                     "properties": {
                       "loi": {
                         "type": "integer",
-                        "example": 10
+                        "example": 10,
+                        "deprecated": true,
+                        "description": "Deprecating Soon: Use 'length_of_interview' instead. This field will be removed in a future version."
                       },
                       "length_of_interview": {
                         "type": "string",
-                        "example": "10"
+                        "example": "10",
+                        "description": "Length of interview in minutes"
                       },
                       "ir": {
                         "type": "integer",
-                        "example": 10
+                        "example": 10,
+                        "deprecated": true,
+                        "description": "Deprecating Soon: Use 'incidence_rate' instead. This field will be removed in a future version."
                       },
                       "incidence_rate": {
                         "type": "string",
-                        "example": "10"
+                        "example": "10",
+                        "description": "Incidence rate as a percentage"
                       },
                       "survey_created_date": {
                         "type": "string",
                         "format": "date-time",
                         "example": "2025-11-17T10:24:10.829Z"
                       },
-                      "survey_lastupdated_date": {
+                      "survey_last_updated_date": {
                         "type": "string",
                         "format": "date-time",
                         "example": "2025-11-17T10:24:10.829Z"
@@ -247,8 +253,8 @@
                       }
                     },
                     "required": [
-                      "loi",
-                      "ir",
+                      "length_of_interview",
+                      "incidence_rate",
                       "surveyNumber"
                     ]
                   }
@@ -388,9 +394,9 @@
             },
             "rows": {
               "type": "integer",
-              "description": "Number of surveys to return per page (1-100).",
+              "description": "Number of surveys to return per page (1-500).",
               "minimum": 1,
-              "maximum": 100,
+              "maximum": 500,
               "example": 50
             },
             "page": {
@@ -481,19 +487,25 @@
             },
             "loi": {
               "type": "integer",
-              "example": 10
+              "example": 10,
+              "deprecated": true,
+              "description": "Deprecated: Use 'length_of_interview' instead. This field will be removed in a future version."
             },
             "length_of_interview": {
               "type": "integer",
-              "example": 10
+              "example": 10,
+              "description": "Length of interview in minutes"
             },
             "ir": {
               "type": "integer",
-              "example": 10
+              "example": 10,
+              "deprecated": true,
+              "description": "Deprecated: Use 'incidence_rate' instead. This field will be removed in a future version."
             },
             "incidence_rate": {
               "type": "integer",
-              "example": 10
+              "example": 10,
+              "description": "Incidence rate as a percentage"
             },
             "cpi": {
               "type": "number",
@@ -531,7 +543,7 @@
               "description": "ISO 8601 date-time when the survey was created",
               "example": "2025-11-17T10:24:10.829Z"
             },
-            "survey_lastupdated_date": {
+            "survey_last_updated_date": {
               "type": "string",
               "format": "date-time",
               "description": "ISO 8601 date-time when the survey was last updated",
@@ -541,8 +553,8 @@
           "required": [
             "_id",
             "surveyNumber",
-            "loi",
-            "ir",
+            "length_of_interview",
+            "incidence_rate",
             "cpi",
             "countryCode"
           ]

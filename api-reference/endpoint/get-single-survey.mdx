@@ -7,6 +7,8 @@ openapi: "POST /surveys/one/{surveyNumber}"
 
 Retrieve details of a specific survey by its survey number.
 
+> **Note:** The fields `loi` and `ir` are going to be deprecated soon. Please use `length_of_interview` and `incidence_rate` instead.
+
 ### Endpoint
 
 ```http
@@ -35,12 +37,10 @@ POST /surveys/one/{surveyNumber}
 
 ```json
 {
-  "loi": 10,
   "length_of_interview": "10",
-  "ir": 10,
   "incidence_rate": "10",
   "survey_created_date": "2025-11-17T10:24:10.829Z",
-  "survey_lastupdated_date": "2025-11-17T10:24:10.829Z",
+  "survey_last_updated_date": "2025-11-17T10:24:10.829Z",
   "surveyNumber": 17633744316852264,
   "qualification": [
     {
