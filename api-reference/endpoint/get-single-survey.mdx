@@ -1,6 +1,6 @@
 ---
-title: 'Get Single Survey'
-openapi: 'POST /surveys/one/{surveyNumber}'
+title: "Get Single Survey"
+openapi: "POST /surveys/one/{surveyNumber}"
 ---
 
 ## Get Single Survey
@@ -8,11 +8,13 @@ openapi: 'POST /surveys/one/{surveyNumber}'
 Retrieve details of a specific survey by its survey number.
 
 ### Endpoint
+
 ```http
 POST /surveys/one/{surveyNumber}
 ```
 
 ### Headers
+
 ```json
 {
   "publisher-authentication-key": "your_project_secret_key"
@@ -20,6 +22,7 @@ POST /surveys/one/{surveyNumber}
 ```
 
 ### Request Body
+
 ```json
 {
   "authorizationKey": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
@@ -27,43 +30,93 @@ POST /surveys/one/{surveyNumber}
 ```
 
 ### Response
+
 ```json
 {
-  "loi": 7,
-  "ir": 25,
-  "surveyNumber": 100000001,
+  "loi": 10,
+  "length_of_interview": "10",
+  "ir": 10,
+  "incidence_rate": "10",
+  "survey_created_date": "2025-11-17T10:24:10.829Z",
+  "survey_lastupdated_date": "2025-11-17T10:24:10.829Z",
+  "surveyNumber": 17633744316852264,
   "qualification": [
     {
-      "question": "What industry do you work in?",
-      "validOptions": ["Insurance"],
-      "displayOptions": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "Manufacturing",
-        "Insurance",
-        "Retail",
-        "Education",
-        "Government",
-        "Consulting",
-        "Hospitality",
-        "Other",
-        "Student"
-      ]
+      "question": "AGE",
+      "validOptions": [
+        {
+          "from": 18,
+          "to": 55
+        }
+      ],
+      "displayOptions": [],
+      "quotas": {}
     },
     {
-      "question": "What is your gender?",
-      "validOptions": ["Female"],
-      "displayOptions": ["Male", "Female"]
+      "question": "GENDER",
+      "validOptions": [
+        "Male",
+        "Female"
+      ],
+      "displayOptions": [
+        "Male",
+        "Female"
+      ],
+      "quotas": {
+        "Male": 0,
+        "Female": 13
+      }
+    },
+    {
+      "question": "STANDARD_HHI_US",
+      "validOptions": [
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 to $249,999",
+        "$250,000 and above"
+      ],
+      "displayOptions": [
+        "Less than $5,000",
+        "$5,000 to $9,999",
+        "$10,000 to $14,999",
+        "$15,000 to $19,999",
+        "$20,000 to $24,999",
+        "$25,000 to $29,999",
+        "$30,000 to $34,999",
+        "$35,000 to $39,999",
+        "$40,000 to $44,999",
+        "$45,000 to $49,999",
+        "$50,000 to $54,999",
+        "$55,000 to $59,999",
+        "$60,000 to $64,999",
+        "$65,000 to $69,999",
+        "$70,000 to $74,999",
+        "$75,000 to $79,999",
+        "$80,000 to $84,999",
+        "$85,000 to $89,999",
+        "$90,000 to $94,999",
+        "$95,000 to $99,999",
+        "$100,000 to $124,999",
+        "$125,000 to $149,999",
+        "$150,000 to $174,999",
+        "$175,000 to $199,999",
+        "$200,000 to $249,999",
+        "$250,000 and above",
+        "Prefer not to answer"
+      ],
+      "quotas": {}
     }
   ],
-  "projectName": "Testing project",
-  "projectNumber": 100000001,
-  "organisation": "mirats insights"
+  "projectName": "New Campaign 007",
+  "projectNumber": 10000092,
+  "organisation": "Mirats Quanto"
 }
 ```
 
 ### Error Response
+
 ```json
 {
   "message": "internal server error",
