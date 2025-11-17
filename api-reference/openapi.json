@@ -1,666 +1,668 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "title": "Mirats Quanto Publisher API",
-    "description": "API documentation for Mirats Quanto Publisher services",
-    "version": "1.0.0"
-  },
-  "servers": [
-    {
-      "url": "https://api.publisher.miratsquanto.com/api/v1/publisher",
-      "description": "Publisher API Base URL"
-    }
-  ],
-  "paths": {
-    "/surveys": {
-      "post": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Mirats Quanto Publisher API",
+      "description": "API documentation for Mirats Quanto Publisher services",
+      "version": "1.17.1"
+    },
+    "servers": [
+      {
+        "url": "https://api.publisher.miratsquanto.com/api/v1/publisher",
+        "description": "Publisher API Base URL"
+      }
+    ],
+    "paths": {
+      "/surveys": {
+        "post": {
+        "tags": [
+          "Surveys"
+        ],
         "summary": "Get All Live Surveys",
         "description": "Retrieve a list of all live surveys based on filtering criteria.",
         "operationId": "getAllLiveSurveys",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "authorizationKey": {
-                    "type": "string",
-                    "description": "Project web API key",
-                    "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
-                  },
-                  "country": {
-                    "type": "string",
-                    "description": "ISO 2-letter country code (e.g., US, IN)",
-                    "example": "US"
-                  },
-                  "language": {
-                    "type": "string",
-                    "description": "Language name",
-                    "example": "English"
-                  },
-                  "lengthOfInterviewGTE": {
-                    "type": "integer",
-                    "description": "Minimum length of interview in minutes",
-                    "example": 1
-                  },
-                  "lengthOfInterviewLTE": {
-                    "type": "integer",
-                    "description": "Maximum length of interview in minutes",
-                    "example": 5
-                  },
-                  "collectPII": {
-                    "type": "boolean",
-                    "description": "Whether to only return surveys that collect PII",
-                    "example": false
-                  },
-                  "rows": {
-                    "type": "integer",
-                    "description": "Number of surveys to return per page (max 100)",
-                    "minimum": 1,
-                    "maximum": 100,
-                    "example": 50
-                  },
-                  "page": {
-                    "type": "integer",
-                    "description": "Page number for pagination (starts from 1)",
-                    "minimum": 1,
-                    "example": 1
-                  },
-                  "CPIGTE": {
-                    "type": "number",
-                    "format": "float",
-                    "description": "Minimum CPI",
-                    "example": 1
-                  },
-                  "CPILTE": {
-                    "type": "number",
-                    "format": "float",
-                    "description": "Maximum CPI",
-                    "example": 5
-                  },
-                  "surveyGroupExists": {
-                    "type": "boolean",
-                    "description": "Filter by whether a survey group exists",
-                    "example": false
-                  },
-                  "incidenceRateGTE": {
-                    "type": "integer",
-                    "description": "Minimum incidence rate",
-                    "example": 1
-                  },
-                  "incidenceRateLTE": {
-                    "type": "integer",
-                    "description": "Maximum incidence rate",
-                    "example": 25
-                  }
-                },
-                "required": [
-                  "authorizationKey",
-                  "country"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response with list of live surveys",
+          "requestBody": {
+            "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "example": true
-                    },
-                    "surveys": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Survey"
-                      }
-                    },
-                    "surveysCount": {
-                      "type": "integer",
-                      "description": "Number of surveys returned in this response",
-                      "example": 3
-                    },
-                    "pagination": {
-                      "$ref": "#/components/schemas/Pagination"
-                    },
-                    "projectName": {
-                      "type": "string",
-                      "example": "New Campaign 007"
-                    },
-                    "projectNumber": {
-                      "type": "integer",
-                      "example": 10000092
-                    },
-                    "organisation": {
-                      "type": "string",
-                      "example": "Mirats Quanto DIY"
-                    }
-                  },
-                  "required": [
-                    "success",
-                    "surveys",
-                    "surveysCount"
-                  ]
+                  "$ref": "#/components/schemas/GetAllSurveysRequest"
                 }
               }
             }
           },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+          "responses": {
+            "200": {
+              "description": "Successful response with list of live surveys",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "surveys": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Survey"
+                        }
+                      },
+                      "surveysCount": {
+                        "type": "integer",
+                        "description": "Number of surveys returned in this response",
+                        "example": 3
+                      },
+                      "pagination": {
+                        "$ref": "#/components/schemas/Pagination"
+                      },
+                      "projectName": {
+                        "type": "string",
+                        "example": "New Campaign 007"
+                      },
+                      "projectNumber": {
+                        "type": "integer",
+                        "example": 10000092
+                      },
+                      "organisation": {
+                        "type": "string",
+                        "example": "Mirats Quanto DIY"
+                      }
+                    },
+                    "required": [
+                      "success",
+                      "surveys",
+                      "surveysCount"
+                    ]
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
                 }
               }
             }
           }
         }
-      }
-    },
-    "/surveys/{surveyNumber}/link": {
-      "post": {
+      },
+      "/surveys/{surveyNumber}/link": {
+        "post": {
+        "tags": [
+          "Surveys"
+        ],
         "summary": "Generate Survey Link",
         "description": "Generate a test and live link for a specific survey.",
         "operationId": "generateSurveyLink",
-        "parameters": [
-          {
-            "name": "surveyNumber",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "example": 17633744316785364
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
+          "parameters": [
+            {
+              "name": "surveyNumber",
+              "in": "path",
+              "required": true,
               "schema": {
-                "type": "object",
-                "properties": {
-                  "authorizationKey": {
-                    "type": "string",
-                    "description": "Project web API key",
-                    "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
-                  }
-                },
-                "required": [
-                  "authorizationKey"
-                ]
+                "type": "integer",
+                "example": 17633744316785364
               }
             }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response with generated links",
+          ],
+          "requestBody": {
+            "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "testLink": {
-                      "type": "string",
-                      "format": "uri",
-                      "example": "https://api.publisher.miratsquanto.com/start?pid=someencryptedid&org=someencryptedid&sId=someencryptedid&supId=someencryptedid&orgId=someencryptedid&sn=100000001&t=1&r=xxxxx"
-                    },
-                    "liveLink": {
-                      "type": "string",
-                      "format": "uri",
-                      "example": "https://api.publisher.miratsquanto.com/start?pid=someencryptedid&org=someencryptedid&sId=someencryptedid&supId=someencryptedid&orgId=someencryptedid&sn=100000001&t=0&r=xxxxx"
-                    }
-                  },
-                  "required": [
-                    "testLink",
-                    "liveLink"
-                  ]
+                  "$ref": "#/components/schemas/AuthorizationRequest"
                 }
               }
             }
           },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+          "responses": {
+            "200": {
+              "description": "Successful response with generated links",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "testLink": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://api.publisher.miratsquanto.com/start?pid=someencryptedid&org=someencryptedid&sId=someencryptedid&supId=someencryptedid&orgId=someencryptedid&sn=100000001&t=1&r=xxxxx"
+                      },
+                      "liveLink": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://api.publisher.miratsquanto.com/start?pid=someencryptedid&org=someencryptedid&sId=someencryptedid&supId=someencryptedid&orgId=someencryptedid&sn=100000001&t=0&r=xxxxx"
+                      }
+                    },
+                    "required": [
+                      "testLink",
+                      "liveLink"
+                    ]
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
                 }
               }
             }
           }
         }
-      }
-    },
-    "/surveys/one/{surveyNumber}": {
-      "post": {
+      },
+      "/surveys/one/{surveyNumber}": {
+        "post": {
+        "tags": [
+          "Surveys"
+        ],
         "summary": "Get Single Survey",
         "description": "Retrieve details of a specific survey by its survey number.",
         "operationId": "getSingleSurvey",
-        "parameters": [
-          {
-            "name": "surveyNumber",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "example": 17633744316852264
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
+          "parameters": [
+            {
+              "name": "surveyNumber",
+              "in": "path",
+              "required": true,
               "schema": {
-                "type": "object",
-                "properties": {
-                  "authorizationKey": {
-                    "type": "string",
-                    "description": "Project web API key",
-                    "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
-                  }
-                },
-                "required": [
-                  "authorizationKey"
-                ]
+                "type": "integer",
+                "example": 17633744316852264
               }
             }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response with survey details",
+          ],
+          "requestBody": {
+            "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "loi": {
-                      "type": "integer",
-                      "example": 10
-                    },
-                    "length_of_interview": {
-                      "type": "string",
-                      "example": "10"
-                    },
-                    "ir": {
-                      "type": "integer",
-                      "example": 10
-                    },
-                    "incidence_rate": {
-                      "type": "string",
-                      "example": "10"
-                    },
-                    "survey_created_date": {
-                      "type": "string",
-                      "format": "date-time",
-                      "example": "2025-11-17T10:24:10.829Z"
-                    },
-                    "survey_lastupdated_date": {
-                      "type": "string",
-                      "format": "date-time",
-                      "example": "2025-11-17T10:24:10.829Z"
-                    },
-                    "surveyNumber": {
-                      "type": "integer",
-                      "example": 17633744316852264
-                    },
-                    "qualification": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/QualificationItem"
-                      }
-                    },
-                    "projectName": {
-                      "type": "string",
-                      "example": "New Campaign 007"
-                    },
-                    "projectNumber": {
-                      "type": "integer",
-                      "example": 10000092
-                    },
-                    "organisation": {
-                      "type": "string",
-                      "example": "Mirats Quanto"
-                    }
-                  },
-                  "required": [
-                    "loi",
-                    "ir",
-                    "surveyNumber"
-                  ]
+                  "$ref": "#/components/schemas/AuthorizationRequest"
                 }
               }
             }
           },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+          "responses": {
+            "200": {
+              "description": "Successful response with survey details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "loi": {
+                        "type": "integer",
+                        "example": 10
+                      },
+                      "length_of_interview": {
+                        "type": "string",
+                        "example": "10"
+                      },
+                      "ir": {
+                        "type": "integer",
+                        "example": 10
+                      },
+                      "incidence_rate": {
+                        "type": "string",
+                        "example": "10"
+                      },
+                      "survey_created_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-11-17T10:24:10.829Z"
+                      },
+                      "survey_lastupdated_date": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-11-17T10:24:10.829Z"
+                      },
+                      "surveyNumber": {
+                        "type": "integer",
+                        "example": 17633744316852264
+                      },
+                      "qualification": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/QualificationItem"
+                        }
+                      },
+                      "projectName": {
+                        "type": "string",
+                        "example": "New Campaign 007"
+                      },
+                      "projectNumber": {
+                        "type": "integer",
+                        "example": 10000092
+                      },
+                      "organisation": {
+                        "type": "string",
+                        "example": "Mirats Quanto"
+                      }
+                    },
+                    "required": [
+                      "loi",
+                      "ir",
+                      "surveyNumber"
+                    ]
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
                 }
               }
             }
           }
         }
-      }
-    },
-    "/surveys/{surveyNumber}/qualification": {
-      "post": {
+      },
+      "/surveys/{surveyNumber}/qualification": {
+        "post": {
+        "tags": [
+          "Surveys"
+        ],
         "summary": "Get Survey Qualification",
         "description": "Retrieve the qualification criteria for a specific survey.",
         "operationId": "getSurveyQualification",
-        "parameters": [
-          {
-            "name": "surveyNumber",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "example": 17633734077335336
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
+          "parameters": [
+            {
+              "name": "surveyNumber",
+              "in": "path",
+              "required": true,
               "schema": {
-                "type": "object",
-                "properties": {
-                  "authorizationKey": {
-                    "type": "string",
-                    "description": "Project web API key",
-                    "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
-                  }
-                },
-                "required": [
-                  "authorizationKey"
-                ]
+                "type": "integer",
+                "example": 17633734077335336
               }
             }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response with survey qualification details",
+          ],
+          "requestBody": {
+            "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "surveyNumber": {
-                      "type": "integer",
-                      "example": 17633734077335336
-                    },
-                    "qualification": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/QualificationItem"
+                  "$ref": "#/components/schemas/AuthorizationRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response with survey qualification details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "surveyNumber": {
+                        "type": "integer",
+                        "example": 17633734077335336
+                      },
+                      "qualification": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/QualificationItem"
+                        }
+                      },
+                      "projectName": {
+                        "type": "string",
+                        "example": "New Campaign 007"
+                      },
+                      "projectNumber": {
+                        "type": "integer",
+                        "example": 10000092
+                      },
+                      "organisation": {
+                        "type": "string",
+                        "example": "Mirats Quanto"
                       }
                     },
-                    "projectName": {
-                      "type": "string",
-                      "example": "New Campaign 007"
-                    },
-                    "projectNumber": {
-                      "type": "integer",
-                      "example": 10000092
-                    },
-                    "organisation": {
-                      "type": "string",
-                      "example": "Mirats Quanto"
-                    }
-                  },
-                  "required": [
-                    "surveyNumber",
-                    "qualification"
-                  ]
+                    "required": [
+                      "surveyNumber",
+                      "qualification"
+                    ]
+                  }
                 }
               }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
                 }
               }
             }
           }
         }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "Survey": {
-        "type": "object",
-        "properties": {
-          "_id": {
-            "type": "string",
-            "example": "691af562a929b3a5a2232679"
-          },
-          "cost_per_interview": {
-            "type": "object",
-            "properties": {
-              "value": {
-                "type": "number",
-                "format": "float",
-                "example": 1.07
-              },
-              "currency_code": {
-                "type": "string",
-                "example": "USD"
-              }
-            },
-            "required": [
-              "value",
-              "currency_code"
-            ]
-          },
-          "surveyNumber": {
-            "type": "integer",
-            "example": 17633744316785364
-          },
-          "survey_number": {
-            "type": "integer",
-            "example": 17633744316785364
-          },
-          "loi": {
-            "type": "integer",
-            "example": 10
-          },
-          "length_of_interview": {
-            "type": "integer",
-            "example": 10
-          },
-          "ir": {
-            "type": "integer",
-            "example": 10
-          },
-          "incidence_rate": {
-            "type": "integer",
-            "example": 10
-          },
-          "cpi": {
-            "type": "number",
-            "format": "float",
-            "example": 1.28
-          },
-          "country": {
-            "type": "string",
-            "example": "United States of America"
-          },
-          "countryCode": {
-            "type": "string",
-            "example": "US"
-          },
-          "country_code": {
-            "type": "string",
-            "example": "US"
-          },
-          "required_completes": {
-            "type": "integer",
-            "example": 13
-          },
-          "overall_completes": {
-            "type": "integer",
-            "example": 0
-          },
-          "revenue_per_click": {
-            "type": "number",
-            "format": "float",
-            "example": 0
-          }
-        },
-        "required": [
-          "_id",
-          "surveyNumber",
-          "loi",
-          "ir",
-          "cpi",
-          "countryCode"
-        ]
-      },
-      "Pagination": {
-        "type": "object",
-        "properties": {
-          "totalDocuments": {
-            "type": "integer",
-            "example": 26654
-          },
-          "rows": {
-            "type": "integer",
-            "example": 3
-          },
-          "page": {
-            "type": "integer",
-            "example": 1
-          },
-          "totalPages": {
-            "type": "integer",
-            "example": 8885
-          }
-        }
-      },
-      "QualificationItem": {
-        "type": "object",
-        "properties": {
-          "question": {
-            "type": "string",
-            "example": "AGE"
-          },
-          "validOptions": {
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "from": {
-                      "type": "integer",
-                      "example": 18
-                    },
-                    "to": {
-                      "type": "integer",
-                      "example": 55
-                    }
-                  },
-                  "required": [
-                    "from",
-                    "to"
-                  ]
-                },
-                {
-                  "type": "string",
-                  "example": "Male"
-                }
-              ]
-            }
-          },
-          "displayOptions": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "example": "Male"
-            }
-          },
-          "quotas": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "integer"
-            },
-            "example": {
-              "Male": 0,
-              "Female": 13
-            }
-          },
-          "questionType": {
-            "type": "string",
-            "example": "Single Punch"
-          },
-          "preCodes": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "example": "18"
-            }
-          }
-        },
-        "required": [
-          "question",
-          "validOptions",
-          "displayOptions",
-          "quotas"
-        ]
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "example": "internal server error"
-          },
-          "code": {
-            "type": "integer",
-            "example": 500
-          },
-          "success": {
-            "type": "boolean",
-            "example": false
-          }
-        },
-        "required": [
-          "message",
-          "code",
-          "success"
-        ]
       }
     },
-    "securitySchemes": {
-      "publisher-authentication-key": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "publisher-authentication-key"
+    "components": {
+      "schemas": {
+        "GetAllSurveysRequest": {
+          "type": "object",
+          "description": "Payload for retrieving live surveys. Includes your Web API Key plus optional filtering criteria.",
+          "properties": {
+            "authorizationKey": {
+              "type": "string",
+              "description": "Web API Key (maps to authorizationKey field in SDK).",
+              "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
+            },
+            "country": {
+              "type": "string",
+              "description": "ISO 2-letter country code (e.g., US, IN).",
+              "example": "US"
+            },
+            "language": {
+              "type": "string",
+              "description": "Language name for survey targeting.",
+              "example": "English"
+            },
+            "lengthOfInterviewGTE": {
+              "type": "integer",
+              "description": "Minimum length of interview in minutes.",
+              "example": 1
+            },
+            "lengthOfInterviewLTE": {
+              "type": "integer",
+              "description": "Maximum length of interview in minutes.",
+              "example": 5
+            },
+            "collectPII": {
+              "type": "boolean",
+              "description": "Only return surveys that collect personally identifiable information.",
+              "example": false
+            },
+            "rows": {
+              "type": "integer",
+              "description": "Number of surveys to return per page (1-100).",
+              "minimum": 1,
+              "maximum": 100,
+              "example": 50
+            },
+            "page": {
+              "type": "integer",
+              "description": "Page number for pagination (starts from 1).",
+              "minimum": 1,
+              "example": 1
+            },
+            "CPIGTE": {
+              "type": "number",
+              "format": "float",
+              "description": "Minimum CPI value.",
+              "example": 1
+            },
+            "CPILTE": {
+              "type": "number",
+              "format": "float",
+              "description": "Maximum CPI value.",
+              "example": 5
+            },
+            "surveyGroupExists": {
+              "type": "boolean",
+              "description": "Filter by whether a survey group exists.",
+              "example": false
+            },
+            "incidenceRateGTE": {
+              "type": "integer",
+              "description": "Minimum incidence rate.",
+              "example": 1
+            },
+            "incidenceRateLTE": {
+              "type": "integer",
+              "description": "Maximum incidence rate.",
+              "example": 25
+            }
+          },
+          "required": [
+            "authorizationKey",
+            "country"
+          ]
+        },
+        "AuthorizationRequest": {
+          "type": "object",
+          "description": "Payload for endpoints that only require the Web API Key in the request body.",
+          "properties": {
+            "authorizationKey": {
+              "type": "string",
+              "description": "Web API Key obtained from the Mirats Publisher Platform.",
+              "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
+            }
+          },
+          "required": [
+            "authorizationKey"
+          ]
+        },
+        "Survey": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "example": "691af562a929b3a5a2232679"
+            },
+            "cost_per_interview": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "format": "float",
+                  "example": 1.07
+                },
+                "currency_code": {
+                  "type": "string",
+                  "example": "USD"
+                }
+              },
+              "required": [
+                "value",
+                "currency_code"
+              ]
+            },
+            "surveyNumber": {
+              "type": "integer",
+              "example": 17633744316785364
+            },
+            "survey_number": {
+              "type": "integer",
+              "example": 17633744316785364
+            },
+            "loi": {
+              "type": "integer",
+              "example": 10
+            },
+            "length_of_interview": {
+              "type": "integer",
+              "example": 10
+            },
+            "ir": {
+              "type": "integer",
+              "example": 10
+            },
+            "incidence_rate": {
+              "type": "integer",
+              "example": 10
+            },
+            "cpi": {
+              "type": "number",
+              "format": "float",
+              "example": 1.28
+            },
+            "country": {
+              "type": "string",
+              "example": "United States of America"
+            },
+            "countryCode": {
+              "type": "string",
+              "example": "US"
+            },
+            "country_code": {
+              "type": "string",
+              "example": "US"
+            },
+            "required_completes": {
+              "type": "integer",
+              "example": 13
+            },
+            "overall_completes": {
+              "type": "integer",
+              "example": 0
+            },
+            "revenue_per_click": {
+              "type": "number",
+              "format": "float",
+              "example": 0
+            }
+          },
+          "required": [
+            "_id",
+            "surveyNumber",
+            "loi",
+            "ir",
+            "cpi",
+            "countryCode"
+          ]
+        },
+        "Pagination": {
+          "type": "object",
+          "properties": {
+            "totalDocuments": {
+              "type": "integer",
+              "example": 26654
+            },
+            "rows": {
+              "type": "integer",
+              "example": 3
+            },
+            "page": {
+              "type": "integer",
+              "example": 1
+            },
+            "totalPages": {
+              "type": "integer",
+              "example": 8885
+            }
+          }
+        },
+        "QualificationItem": {
+          "type": "object",
+          "properties": {
+            "question": {
+              "type": "string",
+              "example": "AGE"
+            },
+            "validOptions": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "from": {
+                        "type": "integer",
+                        "example": 18
+                      },
+                      "to": {
+                        "type": "integer",
+                        "example": 55
+                      }
+                    },
+                    "required": [
+                      "from",
+                      "to"
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "example": "Male"
+                  }
+                ]
+              }
+            },
+            "displayOptions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "Male"
+              }
+            },
+            "quotas": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "example": {
+                "Male": 0,
+                "Female": 13
+              }
+            },
+            "questionType": {
+              "type": "string",
+              "example": "Single Punch"
+            },
+            "preCodes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "18"
+              }
+            }
+          },
+          "required": [
+            "question",
+            "validOptions",
+            "displayOptions",
+            "quotas"
+          ]
+        },
+        "ErrorResponse": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string",
+              "example": "internal server error"
+            },
+            "code": {
+              "type": "integer",
+              "example": 500
+            },
+            "success": {
+              "type": "boolean",
+              "example": false
+            }
+          },
+          "required": [
+            "message",
+            "code",
+            "success"
+          ]
+        }
+      },
+      "securitySchemes": {
+        "publisher-authentication-key": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "publisher-authentication-key",
+          "description": "Send your Secret Key using the `publisher-authentication-key` header. This header is required for every request."
+        }
       }
-    }
-  },
-  "security": [
-    {
-      "publisher-authentication-key": []
-    }
-  ]
-}
+    },
+    "security": [
+      {
+        "publisher-authentication-key": []
+      }
+    ]
+  }
+  
