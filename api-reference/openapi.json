@@ -748,7 +748,7 @@
             "success"
           ]
         },
-                  "GetUserSessionsRequest": {
+        "GetUserSessionsRequest": {
           "type": "object",
           "description": "Payload for retrieving user sessions. Includes your Web API Key plus optional filtering criteria.",
           "properties": {
