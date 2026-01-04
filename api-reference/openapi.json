@@ -747,6 +747,183 @@
             "code",
             "success"
           ]
+        },
+                  "GetUserSessionsRequest": {
+          "type": "object",
+          "description": "Payload for retrieving user sessions. Includes your Web API Key plus optional filtering criteria.",
+          "properties": {
+            "authorizationKey": {
+              "type": "string",
+              "description": "Publisher's project web API key",
+              "example": "DqcInvhIFAl5WtUNwihFUIgUH77EL2hTNRU"
+            },
+            "rows": {
+              "type": "integer",
+              "description": "Number of records per page. Min: 1, Max: 500.",
+              "minimum": 1,
+              "maximum": 500,
+              "default": 100,
+              "example": 100
+            },
+            "page": {
+              "type": "integer",
+              "description": "The page number for pagination.",
+              "minimum": 1,
+              "default": 1,
+              "example": 1
+            },
+            "sessionType": {
+              "type": "integer",
+              "description": "0 = Live, 1 = Test.",
+              "enum": [0, 1],
+              "default": 0,
+              "example": 0
+            },
+            "status": {
+              "type": "string",
+              "description": "Session status filter",
+              "enum": ["all", "completed", "overquota", "terminated", "securityDrop", "prescreen"],
+              "default": "all",
+              "example": "completed"
+            },
+            "startDate": {
+              "type": "string",
+              "format": "date",
+              "description": "ISO Date format (YYYY-MM-DD). Defaults to 30 days ago.",
+              "example": "2025-11-24"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date",
+              "description": "ISO Date format (YYYY-MM-DD). Defaults to current date.",
+              "example": "2025-12-24"
+            }
+          },
+          "required": [
+            "authorizationKey"
+          ]
+        },
+        "UserSession": {
+          "type": "object",
+          "properties": {
+            "rid": {
+              "type": "string",
+              "example": "c339b91cf474987f12aa43015b436f15"
+            },
+            "clientStatus": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Survey completed"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "A survey has been completed by a user"
+                },
+                "code": {
+                  "type": "integer",
+                  "example": 10
+                }
+              },
+              "required": ["title", "description", "code"]
+            },
+            "miratsStatus": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Redirected to client survey"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "The user has been redirected to the client survey"
+                },
+                "code": {
+                  "type": "integer",
+                  "example": 3
+                }
+              },
+              "required": ["title", "description", "code"]
+            },
+            "surveyNumber": {
+              "type": "integer",
+              "example": 1759222310541001
+            },
+            "OS": {
+              "type": "string",
+              "example": "Mac OS X"
+            },
+            "IP": {
+              "type": "string",
+              "example": "159.253.79.204"
+            },
+            "browser": {
+              "type": "string",
+              "example": "Chrome"
+            },
+            "device": {
+              "type": "string",
+              "example": "Desktop"
+            },
+            "duration": {
+              "type": "string",
+              "example": "00:19:07"
+            },
+            "country": {
+              "type": "string",
+              "example": "GB"
+            },
+            "timezone": {
+              "type": "string",
+              "example": "Europe/London"
+            },
+            "startTime": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2025-10-01T04:11:21.819Z"
+            },
+            "endTime": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2025-10-01T04:30:29.007Z"
+            },
+            "reconciliationStatus": {
+              "type": "string",
+              "example": "Approved"
+            }
+          },
+          "required": [
+            "rid",
+            "surveyNumber"
+          ]
+        },
+        "UserSessionsPagination": {
+          "type": "object",
+          "properties": {
+            "totalDocument": {
+              "type": "integer",
+              "example": 59
+            },
+            "rows": {
+              "type": "integer",
+              "example": 500
+            },
+            "page": {
+              "type": "integer",
+              "example": 1
+            },
+            "totalPages": {
+              "type": "integer",
+              "example": 1
+            }
+          },
+          "required": [
+            "totalDocument",
+            "rows",
+            "page",
+            "totalPages"
+          ]
         }
       },
       "securitySchemes": {
