@@ -1,81 +1,82 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Publisher Docs - Mirats Quanto",
-  "logo": {
-    "dark": "https://firebasestorage.googleapis.com/v0/b/miratsgroupcis.appspot.com/o/centralised_information_system%2FMirats%20Insights%20Private%20Limited%2Flarge_logo%2FL_TR_TEXT_W.png?alt=media&token=2829f79a-c6e7-451f-a992-40d1756ce5be",
-    "light": "https://firebasestorage.googleapis.com/v0/b/miratsgroupcis.appspot.com/o/centralised_information_system%2FMirats%20Insights%20Private%20Limited%2Flarge_logo%2FL_TR_TEXT_B.png?alt=media&token=9def6be9-d4cf-4a3a-b389-8bc01a7a3b0d"
-  },
-  "favicon": "https://mirats.in/logo.png",
-  "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:diysupport@miratsinsights.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://publisher.miratsquanto.com/dashboard"
-  },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://docs.publisher.miratsquanto.com"
+    "$schema": "https://mintlify.com/schema.json",
+    "name": "Publisher Docs - Mirats Quanto",
+    "logo": {
+      "dark": "https://firebasestorage.googleapis.com/v0/b/miratsgroupcis.appspot.com/o/centralised_information_system%2FMirats%20Insights%20Private%20Limited%2Flarge_logo%2FL_TR_TEXT_W.png?alt=media&token=2829f79a-c6e7-451f-a992-40d1756ce5be",
+      "light": "https://firebasestorage.googleapis.com/v0/b/miratsgroupcis.appspot.com/o/centralised_information_system%2FMirats%20Insights%20Private%20Limited%2Flarge_logo%2FL_TR_TEXT_B.png?alt=media&token=9def6be9-d4cf-4a3a-b389-8bc01a7a3b0d"
     },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://accounts.miratsgroup.com"
+    "favicon": "https://mirats.in/logo.png",
+    "colors": {
+      "primary": "#0D9373",
+      "light": "#07C983",
+      "dark": "#0D9373",
+      "anchors": {
+        "from": "#0D9373",
+        "to": "#07C983"
+      }
     },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://miratsgroup.com"
+    "topbarLinks": [
+      {
+        "name": "Support",
+        "url": "mailto:diysupport@miratsinsights.com"
+      }
+    ],
+    "topbarCtaButton": {
+      "name": "Dashboard",
+      "url": "https://publisher.miratsquanto.com/dashboard"
+    },
+    "tabs": [
+      {
+        "name": "API Reference",
+        "url": "api-reference"
+      }
+    ],
+    "anchors": [
+      {
+        "name": "Documentation",
+        "icon": "book-open-cover",
+        "url": "https://docs.publisher.miratsquanto.com"
+      },
+      {
+        "name": "Community",
+        "icon": "slack",
+        "url": "https://accounts.miratsgroup.com"
+      },
+      {
+        "name": "Blog",
+        "icon": "newspaper",
+        "url": "https://miratsgroup.com"
+      }
+    ],
+    "navigation": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "quickstart",
+          "development"
+        ]
+      },
+      {
+        "group": "API Documentation",
+        "pages": [
+          "api-reference/introduction"
+        ]
+      },
+      {
+        "group": "Endpoint Examples",
+        "pages": [
+          "api-reference/endpoint/get-all-surveys",
+          "api-reference/endpoint/get-single-survey",
+          "api-reference/endpoint/survey-qualification",
+          "api-reference/endpoint/generate-link",
+          "api-reference/endpoint/user-sessions"
+        ]
+      }
+    ],
+    "footerSocials": {
+      "x": "https://x.com/MiratsInsights",
+      "github": "https://github.com/atomostechhq",
+      "linkedin": "https://www.linkedin.com/company/miratsinsights"
     }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get-all-surveys",
-        "api-reference/endpoint/get-single-survey",
-        "api-reference/endpoint/survey-qualification",
-        "api-reference/endpoint/generate-link"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "x": "https://x.com/MiratsInsights",
-    "github": "https://github.com/atomostechhq",
-    "linkedin": "https://www.linkedin.com/company/miratsinsights"
   }
-}
