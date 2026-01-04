@@ -354,6 +354,81 @@
             }
           }
         }
+      },
+      "/user-sessions": {
+        "post": {
+          "tags": [
+            "User Sessions"
+          ],
+          "summary": "Get User Sessions",
+          "description": "Retrieve user session data with filtering and pagination options.",
+          "operationId": "getUserSessions",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserSessionsRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful response with user sessions data",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "message": {
+                        "type": "string",
+                        "example": "User sessions fetched successfully"
+                      },
+                      "organisation": {
+                        "type": "string",
+                        "example": "Organisation Name"
+                      },
+                      "project": {
+                        "type": "string",
+                        "example": "Project Name"
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/UserSession"
+                        }
+                      },
+                      "pagination": {
+                        "$ref": "#/components/schemas/UserSessionsPagination"
+                      }
+                    },
+                    "required": [
+                      "success",
+                      "message",
+                      "data",
+                      "pagination"
+                    ]
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "components": {
