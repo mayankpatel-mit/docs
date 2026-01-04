@@ -1,0 +1,104 @@
+---
+title: "Get User Sessions"
+openapi: "POST /user-sessions"
+---
+
+## Get User Sessions
+
+Retrieve user session data with filtering and pagination options.
+
+### Endpoint
+
+```http
+POST /user-sessions
+```
+
+### Headers
+
+```json
+{
+  "publisher-authentication-key": "your_project_secret_key"
+}
+```
+
+> **Note:** The `publisher-authentication-key` header corresponds to your **Secret Key**. The `authorizationKey` in the request body corresponds to your **Web API Key**.
+
+### Request Body
+
+```json
+{
+  "authorizationKey": "your web api key",
+  "rows": 100,
+  "page": 1,
+  "sessionType": 0,
+  "status": "completed",
+  "startDate": "2025-11-24",
+  "endDate": "2025-12-24"
+}
+```
+
+#### Request Body Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `authorizationKey` | string | Yes | - | Publisher's project web API key |
+| `rows` | integer | No | 100 | Number of records per page. Min: 1, Max: 500. |
+| `page` | integer | No | 1 | The page number for pagination. |
+| `sessionType` | integer | No | 0 | 0 = Live, 1 = Test. |
+| `status` | string | No | "all" | Enum: all, completed, overquota, terminated, securityDrop, prescreen. |
+| `startDate` | string | No | Last Month | ISO Date format (YYYY-MM-DD). Defaults to 30 days ago. |
+| `endDate` | string | No | Today | ISO Date format (YYYY-MM-DD). Defaults to current date. |
+
+### Response
+
+```json
+{
+  "success": true,
+  "message": "User sessions fetched successfully",
+  "organisation": "Organisation Name",
+  "project": "Project Name",
+  "data": [
+    {
+      "rid": "c339b91cf474987f12aa43015b436f15",
+      "clientStatus": {
+        "title": "Survey completed",
+        "description": "A survey has been completed by a user",
+        "code": 10
+      },
+      "miratsStatus": {
+        "title": "Redirected to client survey",
+        "description": "The user has been redirected to the client survey",
+        "code": 3
+      },
+      "surveyNumber": 1759222310541001,
+      "OS": "Mac OS X",
+      "IP": "159.253.79.204",
+      "browser": "Chrome",
+      "device": "Desktop",
+      "duration": "00:19:07",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "startTime": "2025-10-01T04:11:21.819Z",
+      "endTime": "2025-10-01T04:30:29.007Z",
+      "reconciliationStatus": "Approved"
+    }
+  ],
+  "pagination": {
+    "totalDocument": 59,
+    "rows": 500,
+    "page": 1,
+    "totalPages": 1
+  }
+}
+```
+
+### Error Response
+
+```json
+{
+  "message": "internal server error",
+  "code": 500,
+  "success": false
+}
+```
+
